@@ -5,22 +5,22 @@ import java.util.List;
 import entity.Member;
 
 public interface MemberDao {
-
-	// create
+	//create
 	void add(Member m);
-
-	// read
+	
+	
+	//read
 	List<Member> queryAll();
-
-	Member queryMember(String username, String password);
-
-	boolean queryUsername(String username);
-
-	Member queryById(int id);
-
-	// update
+	List<Member> queryMember(String username,String password);
+	List<Member> queryUsername(String username);
+	Member queryById(int id);//find
+	
+	//update
 	void update(Member m);
-
-	// delete
+	
+	
+	//delete
+	
+	void delete(Member m);
 
 }

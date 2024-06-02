@@ -7,58 +7,79 @@ import dao.MemberDao;
 import entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 
-public class MemberDaoImpl implements MemberDao {
-
-	private EntityManager em = DbConnection.getDb();
+public class MemberDaoImpl implements MemberDao{
 
 	public static void main(String[] args) {
-		// insert
-//		Member m = new Member("ab", "o", "000", "taipei", "444");
-//		new MemberDaoImpl().add(m);
-
-		Member m = new MemberDaoImpl().queryById(1);
-		System.out.println(m.getName());
-
+		Member m=new MemberDaoImpl().queryById(2);
+		System.out.println(m);
+		
 	}
 
+	private static EntityManager em=DbConnection.getDb();
+	
 	@Override
 	public void add(Member m) {
-
-		EntityTransaction et = em.getTransaction();
+		EntityTransaction et=em.getTransaction();
 		et.begin();
 		em.persist(m);
 		et.commit();
-
+		
 	}
 
 	@Override
 	public List<Member> queryAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String SQL="select * from member";
+		Query q=em.createNativeQuery(SQL, Member.class);		
+		
+		return q.getResultList();
 	}
 
 	@Override
-	public Member queryMember(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Member> queryMember(String username, String password) {
+		String SQL="select * from member where username=?1 and password=?2";
+		Query q=em.createNativeQuery(SQL, Member.class);
+		q.setParameter(1, username);
+		q.setParameter(2, password);
+		
+		
+		
+		return q.getResultList();
 	}
 
 	@Override
-	public boolean queryUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Member> queryUsername(String username) {
+		String SQL="select * from member where username=?1";
+		Query q=em.createNativeQuery(SQL, Member.class);
+		q.setParameter(1, username);
+		
+		return q.getResultList();
 	}
 
 	@Override
 	public Member queryById(int id) {
-		return em.find(Member.class, id);
+		Member m=em.find(Member.class, id);
+		
+		return m;
 	}
 
 	@Override
 	public void update(Member m) {
-		// TODO Auto-generated method stub
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		em.merge(m);
+		et.commit();
+		
+	}
 
+	@Override
+	public void delete(Member m) {
+		EntityTransaction et=em.getTransaction();
+		et.begin();
+		em.remove(m);
+		et.commit();
+		
 	}
 
 }
