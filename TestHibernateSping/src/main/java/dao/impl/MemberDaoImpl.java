@@ -57,4 +57,15 @@ public class MemberDaoImpl implements MemberDao {
 
 	}
 
+	@Override
+	public List<Member> selectId(int id) {
+		Session se = DbConnection.getDb();
+		String SQL = "select * from member where id=?1";
+		NativeQuery q = se.createNativeQuery(SQL, Member.class);
+		q.setParameter(1, id);
+
+		// return q.getResultList();
+		return q.list();
+	}
+
 }

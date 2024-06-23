@@ -11,6 +11,8 @@ public interface MemberDao {
 	// read
 	List<Member> selectAll();
 
+	List<Member> selectId(int id);
+
 	// update
 	void update(Member m);
 

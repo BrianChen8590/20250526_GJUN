@@ -7,7 +7,9 @@
 		http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
 	<!-- bean definitions here -->
-	<bean id="MDI" class="dao.impl.MemberDaoImpl"></bean>
-	<bean id="PDI" class="dao.impl.PorderDaoImpl"></bean>
+	<bean id="MDI" class="dao.impl.MemberDaoImpl" />
+	<bean id="PDI" class="dao.impl.PorderDaoImpl" />
+	<bean id="PSI" class="service.impl.PorderServiceImpl" />
+	<bean id="MSI" class="service.impl.MemberServiceImpl" />
 
 </beans>

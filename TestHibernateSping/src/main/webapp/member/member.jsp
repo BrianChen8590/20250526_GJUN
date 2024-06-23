@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="member/member.jsp">1)會員管理</a>
+	<a href="addMember.jsp">1)新增</a>
+	<br>
+	<a href="queryMember.jsp">2)查詢</a>
+	<br>
+	<a href="">3)修改</a>
+	<br>
+	<a href="">4)刪除</a>
+	<br>
 </body>
 </html>
