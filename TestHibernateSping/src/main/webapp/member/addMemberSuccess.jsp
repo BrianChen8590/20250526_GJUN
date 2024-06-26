@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="member/member.jsp">1)會員管理</a>
+	<h3>建檔成功</h3>
+	<a href="member.jsp">回會員管理</a>
 </body>
 </html>
