@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-deleteMember
+<form action="delete" method="post">
+id:<input type="text" name="id">
+<input type="submit" value="ok">
+</form>
 </body>
 </html>

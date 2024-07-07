@@ -28,8 +28,20 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Member> l=selectAllMember();
+		String show="";
+		for(Member m:l)
+		{
+			show=show+"<tr><td>"+m.getId()+
+					"<td>"+m.getName()+
+					"<td>"+m.getUsername()+
+					"<td>"+m.getPassword()+
+					"<td>"+m.getAddress()+
+					"<td>"+m.getPhone();
+					
+		}
+		
+		return show;
 	}
 
 	@Override
@@ -42,14 +54,16 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void updateMember(int id, String password, String name) {
-		// TODO Auto-generated method stub
+		Member m = selectMemberById(id);
+		m.setPassword(password);
+		m.setName(name);
 
+		mdi.update(m);
 	}
 
 	@Override
 	public void deleteMember(int id) {
-		// TODO Auto-generated method stub
-
+		mdi.delete(id);
 	}
 
 }
