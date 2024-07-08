@@ -21,9 +21,21 @@ public class MemberServiceImplTest {
 		System.out.println(msi.selectAllMember());
 	}
 
-	@Test
+	// @Test
 	public void selectMemberByIdTest() {
 		System.out.println(msi.selectMemberById(24));
+	}
+
+	// @Test
+	public void updateMemberTest() {
+		msi.updateMember(2, "000", "jackie");
+		System.out.println("update success");
+	}
+
+	@Test
+	public void deleteMemberTest() {
+		msi.deleteMember(16);
+		System.out.println("delete success");
 	}
 
 }

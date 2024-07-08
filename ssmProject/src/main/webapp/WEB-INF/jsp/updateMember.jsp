@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-updateMember
+<form action="update" method="post">
+id:<input type="text" name="id">
+password:<input type="password" name="password">
+name:<input type="text" name="name">
+<input type="submit" value="ok">
+</form>
 </body>
 </html>
