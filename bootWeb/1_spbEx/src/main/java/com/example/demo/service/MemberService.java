@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.model.Member;
 
 public interface MemberService {
@@ -11,5 +13,13 @@ public interface MemberService {
 	Member LoginMember(String username, String password);
 
 	boolean selectUsername(String name);
+
+	List<Member> selectAllMember();
+
+	// update
+	void updateMember(int id, String name, String address);
+
+	// delete
+	void deleteMember(int id);
 
 }
