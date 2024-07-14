@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,9 +47,56 @@ public class MemberController {
 		}
 	}
 
+	@PostMapping("updateMember")
+	public ModelAndView updateMember(String id, String name, String address) {
+
+		/*
+		 * 1.接收-->id轉int 
+		 * 2.執行 updateMember 
+		 * 3.切換 loginSuccess
+		 */
+		int ID = Integer.parseInt(id);
+		msi.updateMember(ID, name, address);
+
+		return new ModelAndView("loginSuccess");
+	}
+	
+	@PostMapping("deleteMember")
+	public ModelAndView deleteMember(String id) {
+
+		/*
+		 * 1.接收-->id轉int 
+		 * 2.執行 deleteMember 
+		 * 3.切換 loginSuccess
+		 */
+		int ID = Integer.parseInt(id);
+		msi.deleteMember(ID);
+
+		return new ModelAndView("loginSuccess");
+	}
+
 	@GetMapping("query")
-	public ModelAndView query() {
+	public ModelAndView query(HttpSession session) {
+		List<Member> l = msi.selectAllMember();
+		session.setAttribute("LM", l);
+
 		return new ModelAndView("query");
+	}
+
+	@GetMapping("update")
+	public ModelAndView update() {
+
+		return new ModelAndView("update");
+	}
+
+	@GetMapping("delete")
+	public ModelAndView delete() {
+		return new ModelAndView("delete");
+	}
+
+	@GetMapping("loginSuccess")
+	public ModelAndView loginSuccess() {
+		return new ModelAndView("loginSuccess");
 	}
 
 }

@@ -42,4 +42,30 @@ public class MemberServiceImpl implements MemberService {
 		return x;
 	}
 
+	@Override
+	public List<Member> selectAllMember() {
+		return mdi.selectAll();
+	}
+
+	@Override
+	public void updateMember(int id, String name, String address) {
+		/*
+		 * 1.id--->調閱member-->轉array 
+		 * 2.setName , setAddress 
+		 * 3.update-->注入修改
+		 */
+		List<Member> l = mdi.selectById(id);
+		Member[] m = l.toArray(new Member[1]);
+		m[0].setName(name);
+		m[0].setAddress(address);
+
+		mdi.update(m[0]);
+
+	}
+
+	@Override
+	public void deleteMember(int id) {
+		mdi.delete(id);		
+	}
+
 }
