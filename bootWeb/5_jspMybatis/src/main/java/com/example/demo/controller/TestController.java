@@ -7,16 +7,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 	
-	@GetMapping("addMemberSuccess")
-	public String addMemberSuccess()
+	@GetMapping("loginSuccess")
+	public String loginSuccess()
 	{
-		return "addMemberSuccess";
+		return "loginSuccess";
 	}
 	
-	@GetMapping("addMemberSuccess2")
-	public ModelAndView addMemberSuccess2()
+	
+	
+	@GetMapping("loginSuccess2")
+	public ModelAndView loginSuccess2()
 	{
-		return new ModelAndView("addMemberSuccess");
+		return new ModelAndView("loginSuccess");
 	}
-
+	
 }
